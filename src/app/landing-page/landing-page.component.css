@@ -1,0 +1,66 @@
+#registration_holder{
+    margin-top:40px;
+    margin-left:100px;
+    margin-right:100px;
+    border-top: 1px dotted grey;
+}
+
+#interest_holder{
+    margin-top:20px;
+    display:inline-block;
+}
+
+#interest_options_holder{
+    display:inline-block;
+}
+
+#selected_interests_holder{
+    display:inline-block;
+}
+
+.text_input{
+    width: 700px;
+    font-size:21px;
+}
+
+.input_name{
+    padding-right:50px;
+    font-size:24px;
+}
+
+.interest_button{
+    display: inline-block;
+    margin-right:40px;
+    margin-left:40px;
+    margin-top:20px;
+    margin-bottom:20px;
+    padding-left:5px;
+    padding-right:5px;
+    padding-top:5px;
+    padding-bottom:5px;
+}
+
+select{
+    font-size:21px;
+}
+
+.trait_selector_holder{
+    text-align:left;
+    margin-left:200px;
+}
+
+.trait_selector{
+    width:700px;
+}
+
+.submission_err_holder{
+    color:red;
+}
+
+#interests_title{
+    font-size:24px;
+}
+
+.selected{
+    color: blue;
+}

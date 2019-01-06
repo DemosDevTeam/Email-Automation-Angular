@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+
+/*generic class for centering child elements - usually applied to divs*/
+.centered{
+    text-align:center;
+}
+
+/*generic class for making elements inline-block*/
+.inline{
+    display: inline-block;
+}
+
+/*generic class to lower amount of top and bottom padding for elements - mostly used for p and h tags*/
+.small_vert_margin{
+    margin-top:2px;
+    margin-bottom:2px;
+}
