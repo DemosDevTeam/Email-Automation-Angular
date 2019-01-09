@@ -1,8 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 
 /*generic class for centering child elements - usually applied to divs*/
 .centered{
     text-align:center;
+}
+
+/*generic class to left align content*/
+.left_align{
+    text-align:left;
 }
 
 /*generic class for making elements inline-block*/
@@ -14,4 +20,77 @@
 .small_vert_margin{
     margin-top:2px;
     margin-bottom:2px;
+}
+
+.content_block_divider{
+    width:90%;
+    border-top: 3px solid #49c7e3ff;
+    margin-left: 5%;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.content_title{
+    text-align:center;
+    font-size:30px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.large_text_input{
+    font-size:20px;
+    width:500px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.large_text_title{
+    font-size:30px;
+    margin-bottom:4px;
+    margin-top:8px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+/*site-wide styling for content tags and preferences*/
+.tag_button{
+    font-size:20px;
+    background-color:white;
+    font-family: 'Source Sans Pro', sans-serif;
+    border-right: 2px solid #C8C8C8;
+    border-top: 2px solid #C8C8C8;
+    border-bottom: 2px solid #C8C8C8;
+    padding: 3px 3px 3px 3px;
+    color: #C8C8C8;
+}
+
+.tag_button_left_border{
+    border-left:2px solid #C8C8C8;
+}
+
+.tag_button:active {
+
+}
+
+.tag_selector{
+    
+}
+
+
+/*generic styling for general tags*/
+button:focus{
+    outline: 0;
+}
+
+p{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+h1{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+body{
+    margin: 0;
+}
+
+.spacing{
+    height:60px;
 }

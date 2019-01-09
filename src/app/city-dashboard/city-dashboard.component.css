@@ -1,0 +1,136 @@
+/*used to style tags that have been selected for content blocks*/
+.selected{
+    color: black;
+    border-top-color: #49c7e3ff;
+    top-width:3px;
+}
+
+/*styling for content holder sections*/
+.content_holder{
+    background-color:white;
+    box-shadow: 0px 0px 2px 2px #C8C8C8;
+    padding-left:10px;
+    padding-top:5px;
+    padding-bottom:5px;
+    margin-bottom:12.5px;
+}
+
+/*styling for title of each content holder section*/
+.content_title{
+    margin-top:2px;
+    margin-bottom:4px;
+}
+
+/*styling for adding and removing content*/
+.content_button{
+    font-size:20px;
+    background-color:white;
+    font-family: 'Source Sans Pro', sans-serif;
+    border-radius: 15px;
+    margin-left:5px;
+    margin-right:5px;
+    padding: 10px;
+    color:white;
+}
+
+.add_content_button{
+    background-color:#49c7e3ff;
+}
+
+.remove_content_button{
+    background-color:#ee4c50ff;
+}
+
+
+/*styling for adding and removing questions*/
+.question_button{
+    font-size:15px;
+    background-color:white;
+    font-family: 'Source Sans Pro', sans-serif;
+    margin-left:3px;
+    margin-right:3px;
+    border-radius:5px;
+}
+
+.mc_answers_holder{
+    display:inline-block;
+}
+
+.mc_question{
+    font-size:15px;
+    margin-bottom:5px;
+    width:300px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.mc_answer{
+    font-size:15px;
+    margin-right:5px;
+    width:225px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.mc_question_holder{
+    margin-bottom:22.5px;
+}
+
+
+
+/*multiple choice answer styling*/
+.mc_answer_button{
+    border-radius:50%;
+    font-size:20px;
+    border: 2px solid #C8C8C8;
+    color: white;
+    margin-right:2px;
+    font-weight:bold;
+}
+
+.mc_answer_button:active{
+    box-shadow: 0px 0px 2px 2px #C8C8C8;
+}
+
+.add_mc_answer_button{
+    background-color: #49c7e3ff;
+}
+
+.remove_mc_answer_button{
+    background-color: #ee4c50ff;
+}
+
+/*free response styling*/
+.fr_question{
+    font-size:15px;
+    margin-bottom:5px;
+    width:300px;
+}
+
+/*styling for mc and fr static content*/
+.questions_header{
+    font-size:20px;
+    margin-bottom:1px;
+}
+
+/*Styling for indentation of inputs*/
+.indented_holder{
+    margin-left:5px;
+}
+
+#date_time_input{
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 20px;
+    width: 250px;
+}
+
+#submit_button_holder{
+    text-align:center;
+}
+
+#submit_content{
+    font-size: 30px;
+}
+
+#big_holder {
+    padding: 8px;
+    background-color: #f7f7f7;
+}

@@ -10,34 +10,30 @@
     display:inline-block;
 }
 
-#interest_options_holder{
-    display:inline-block;
-}
-
 #selected_interests_holder{
     display:inline-block;
 }
 
 .text_input{
-    width: 700px;
+    width: 950px;
     font-size:21px;
 }
 
 .input_name{
     padding-right:50px;
     font-size:24px;
+    margin-bottom:3px;
 }
 
 .interest_button{
-    display: inline-block;
-    margin-right:40px;
-    margin-left:40px;
-    margin-top:20px;
-    margin-bottom:20px;
-    padding-left:5px;
-    padding-right:5px;
-    padding-top:5px;
-    padding-bottom:5px;
+    font-size: 20px;
+    background-color: white;
+    font-family: 'Source Sans Pro', sans-serif;
+    border-right: 2px solid #C8C8C8;
+    border-top: 2px solid #C8C8C8;
+    border-bottom: 2px solid #C8C8C8;
+    padding: 3px 3px 3px 3px;
+    color: #C8C8C8;
 }
 
 select{
@@ -46,11 +42,11 @@ select{
 
 .trait_selector_holder{
     text-align:left;
-    margin-left:200px;
+    margin-left:135px;
 }
 
 .trait_selector{
-    width:700px;
+    width:950px;
 }
 
 .submission_err_holder{
@@ -59,8 +55,40 @@ select{
 
 #interests_title{
     font-size:24px;
+    margin-top:30px;
 }
 
 .selected{
-    color: blue;
+    color: black;
+    border-top-color: #49c7e3ff;
+}
+
+.sub_header{
+    text-align:center;
+    margin-top:2px;
+    margin-bottom:2px;
+}
+
+.subtext{
+  margin-top:0;
+  margin-bottom:10px;  
+  padding-left: 250px;
+  padding-right: 250px;
+  color: #888888;
+}
+
+#submission_button{
+    font-size: 25px;
+    background-color: #49c7e3ff;
+    font-family: 'Source Sans Pro', sans-serif;
+    border-radius: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: white;
 }

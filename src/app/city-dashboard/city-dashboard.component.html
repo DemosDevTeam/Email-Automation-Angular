@@ -1,3 +1,210 @@
-<p>
-  city-dashboard works!
-</p>
+<div id="big_holder"> 
+  <div id="event_holder" class="content_holder">
+    <h2 class="content_title">Events</h2>
+    <div class="content_block_divider"></div>
+    <div class="indented_holder" *ngFor="let event of upload.events">
+      <p class="large_text_title">Title</p>
+      <input class="inline large_text_input" [(ngModel)]="event.title" placeholder="The best event ever!"><br>
+      <p class="large_text_title">Associated Text</p>
+      <input class="inline large_text_input associated_text_holder" [(ngModel)]="event.text" placeholder="This event was put on by the city of goodness">
+      <p class="large_text_title">Add tags to your content</p>
+      <div class="inline tag_selector">
+        <button class="inline tag_button" [ngClass]="[isFirst(content, possible_content_tags), isSelected(event, content.val)]" *ngFor="let content of possible_content_tags" (click)="toggleTag(event, content.val)">{{content.key}}</button>
+      </div>
+
+      <p class="large_text_title">Citizen Questions</p>
+      <div id="mc_question_interface">
+
+        <p class="questions_header">Multiple Choice Questions</p>
+        <div class="mc_questions_holder" *ngIf="event.associatedMCQuestions">
+          <div class="mc_question_holder" *ngFor="let mc_question of event.associatedMCQuestions">
+            <input class="inline mc_question text_input" [(ngModel)]="mc_question.question" placeholder="Question here"><br>
+            <div class="mc_answers_holder" *ngIf="mc_question.answerChoices">
+              <input class="inline mc_answer" *ngFor="let answer_choice of mc_question.answerChoices" [(ngModel)]="answer_choice.answerChoice" placeholder="Answer Choice here">
+              <button class="mc_answer_button add_mc_answer_button" (click)="addMultipleChoiceAnswer(mc_question)">+</button>
+              <button class="mc_answer_button remove_mc_answer_button" (click)="removeMultipleChoiceAnswer(mc_question)">-</button>
+            </div>
+          </div>
+        </div>
+        <button class="question_button" id="add_mc_question" (click)="addMultipleChoice(event.associatedMCQuestions)">Add Question</button>
+        <button class="question_button" id="remove_mc_question" (click)="removeMultipleChoice(event.associatedMCQuestions)">Remove Question</button>
+      </div>
+
+      <div id="fr_question_interface">
+        <p class="questions_header"> Free Response Questions</p>
+        <div class="fr_questions_holder" *ngIf="event.associatedFRQuestions.length">
+          <div *ngFor="let fr_question of event.associatedFRQuestions">
+            <input class="inline fr_question text_input" [(ngModel)]="fr_question" placeholder="Question here"><br>
+          </div>
+        </div>
+        <button class="question_button" id="add_fr_question" (click)="addFreeResponseQuestion(event.associatedFRQuestions)">Add Question</button>
+        <button class="question_button" id="remove_fr_question" (click)="removeFreeResponseQuestion(event.associatedFRQuestions)">Remove Question</button>
+      </div>
+
+      <div class="content_block_divider"></div>
+    </div>
+    <div class="content_buttons_holder indented_holder">
+      <button class="content_button add_content_button" id="add_event" (click)="addContent(upload.events)">Add Event Content</button>
+      <button class="content_button remove_content_button" id="remove_event" (click)="removeContent(upload.events)">Remove Event Content</button>
+    </div>
+  </div>
+
+  <div id="council_meeting_updates_holder" class="content_holder">
+    <h2 class="content_title">Council meeting Updates</h2>
+    <div class="content_block_divider"></div>
+    <div class="indented_holder" *ngFor="let meeting_update of upload.councilMeetingUpdates">
+      <p class="large_text_title">Title</p>
+      <input class="inline large_text_input" [(ngModel)]="meeting_update.title" placeholder="Town council meeting one"><br>
+      <p class="large_text_title">Associated Text</p>
+      <input class="inline large_text_input associated_text_holder" [(ngModel)]="meeting_update.text" placeholder="Blurb about what happened at this town council meeting">
+      
+      <p class="large_text_title">Add tags to your content</p>
+      <div class="inline tag_selector">
+        <button class="inline tag_button" [ngClass]="isSelected(meeting_update, content.val)" *ngFor="let content of possible_content_tags" (click)="toggleTag(meeting_update, content.val)">{{content.key}}</button>
+      </div>
+
+      <p class="large_text_title">Citizen Questions</p>
+      <div id="mc_question_interface">
+
+        <p class="questions_header">Multiple Choice Questions</p>
+        <div class="mc_questions_holder" *ngIf="meeting_update.associatedMCQuestions">
+          <div *ngFor="let mc_question of meeting_update.associatedMCQuestions">
+            <input class="inline mc_question text_input" [(ngModel)]="mc_question.question" placeholder="Question here"><br>
+            <div class="mc_answers_holder" *ngIf="mc_question.answerChoices">
+              <input class="inline mc_answer" *ngFor="let answer_choice of mc_question.answerChoices" [(ngModel)]="answer_choice.answerChoice" placeholder="Answer Choice here">
+              <button class="mc_answer_button" (click)="addMultipleChoiceAnswer(mc_question)">+</button>
+              <button class="mc_answer_button" (click)="removeMultipleChoiceAnswer(mc_question)">-</button>
+            </div>
+          </div>
+        </div>
+        <button class="question_button" id="add_mc_question" (click)="addMultipleChoice(meeting_update.associatedMCQuestions)">Add Question</button>
+        <button class="question_button" id="remove_mc_question" (click)="removeMultipleChoice(meeting_update.associatedMCQuestions)">Remove Question</button>
+      </div>
+
+      <div id="fr_question_interface">
+        <p class="questions_header">Free Response Questions</p>
+        <div class="fr_questions_holder" *ngIf="meeting_update.associatedFRQuestions">
+          <div *ngFor="let fr_question of meeting_update.associatedFRQuestions">
+            <input class="inline fr_question text_input" [(ngModel)]="fr_question" placeholder="Question here"><br>
+          </div>
+        </div>
+        <button class="question_button" id="add_fr_question" (click)="addFreeResponseQuestion(meeting_update.associatedFRQuestions)">Add Question</button>
+        <button class="question_button" id="remove_fr_question" (click)="removeFreeResponseQuestion(meeting_update.associatedFRQuestions)">Remove Question</button>
+      </div>
+      <div class="content_block_divider"></div>
+    </div>
+    <div class="content_buttons_holder indented_holder">
+      <button class="content_button add_content_button" id="add_council_meeting_updates" (click)="addContent(upload.councilMeetingUpdates)">Add Council Meeting Update Content</button>
+      <button class="content_button remove_content_button" id="remove_council_meeting_updates" (click)="removeContent(upload.councilMeetingUpdates)">Remove Council Meeting Update Content</button>
+    </div>
+  </div>
+
+  <div id="town_in_news_holder" class="content_holder">
+    <h2 class="content_title">Town in News</h2>
+    <div class="content_block_divider"></div>
+    <div class="indented_holder" *ngFor="let news of upload.townInTheNews">
+      <p class="large_text_title">Title</p>
+      <input class="inline large_text_input" [(ngModel)]="news.title" placeholder="We got in the news this week"><br>
+      <p class="large_text_title">Associated Text</p>
+      <input class="inline large_text_input associated_text_holder" [(ngModel)]="news.text" placeholder="Description about how we got in the news">
+      <p class="large_text_title">Add tags to your content</p>
+      <div class="inline tag_selector">
+        <button class="inline tag_button" [ngClass]="isSelected(news, content.val)" *ngFor="let content of possible_content_tags" (click)="toggleTag(news, content.val)">{{content.key}}</button>
+      </div>
+
+      <p class="large_text_title">Citizen Questions</p>
+      <div id="mc_question_interface">
+
+        <p class="questions_header">Multiple Choice Questions</p>
+        <div class="mc_questions_holder" *ngIf="news.associatedMCQuestions">
+          <div *ngFor="let mc_question of news.associatedMCQuestions">
+            <input class="inline mc_question text_input" [(ngModel)]="mc_question.question" placeholder="Question here"><br>
+            <div class="mc_answers_holder" *ngIf="mc_question.answerChoices">
+              <input class="inline mc_answer" *ngFor="let answer_choice of mc_question.answerChoices" [(ngModel)]="answer_choice.answerChoice" placeholder="Answer Choice here">
+              <button class="mc_answer_button" (click)="addMultipleChoiceAnswer(mc_question)">+</button>
+              <button class="mc_answer_button" (click)="removeMultipleChoiceAnswer(mc_question)">-</button>
+            </div>
+          </div>
+        </div>
+        <button class="question_button" id="add_mc_question" (click)="addMultipleChoice(news.associatedMCQuestions)">Add Question</button>
+        <button class="question_button" id="remove_mc_question" (click)="removeMultipleChoice(news.associatedMCQuestions)">Remove Question</button>
+      </div>
+
+      <div id="fr_question_interface">
+        <p class="questions_header">Free Response Questions</p>
+        <div class="fr_questions_holder" *ngIf="news.associatedFRQuestions.length">
+          <div *ngFor="let fr_question of news.associatedFRQuestions">
+            <input class="inline fr_question text_input" [(ngModel)]="fr_question" placeholder="Question here"><br>
+          </div>
+        </div>
+        <button class="question_button" id="add_fr_question" (click)="addFreeResponseQuestion(news.associatedFRQuestions)">Add Question</button>
+        <button class="question_button" id="remove_fr_question" (click)="removeFreeResponseQuestion(news.associatedFRQuestions)">Remove Question</button>
+      </div>
+      <div class="content_block_divider"></div>
+    </div>
+    <div class="content_buttons_holder indented_holder">
+      <button class="content_button add_content_button" id="add_news" (click)="addContent(upload.townInTheNews)">Add Town in News Content</button>
+      <button class="content_button remove_content_button" id="remove_news" (click)="removeContent(upload.townInTheNews)">Remove Town in News Content</button>
+    </div>
+  </div>
+
+  <div id="community_action_opportunities_holder" class="content_holder">
+    <h2 class="content_title">Community Action Opportunities</h2>
+    <div class="content_block_divider"></div>
+    <div class="indented_holder" *ngFor="let community_action of upload.communityActionOpportunities">
+      <p class="large_text_title">Title</p>
+      <input class="inline large_text_input" [(ngModel)]="community_action.title" placeholder="Get involved here"><br>
+      <p class="large_text_title">Associated Text</p>
+      <input class="inline large_text_input associated_text_holder" [(ngModel)]="community_action.text" placeholder="More details">
+      <p class="large_text_title">Add tags to your content</p>
+      <div class="inline tag_selector">
+        <button class="inline tag_button" [ngClass]="isSelected(community_action, content.val)" *ngFor="let content of possible_content_tags" (click)="toggleTag(community_action, content.val)">{{content.key}}</button>
+      </div>
+
+      <p class="large_text_title">Citizen Questions</p>
+      <div id="mc_question_interface">
+
+        <p class="questions_header">Multiple Choice Questions</p>
+        <div class="mc_questions_holder" *ngIf="community_action.associatedMCQuestions">
+          <div *ngFor="let mc_question of community_action.associatedMCQuestions">
+            <input class="inline mc_question text_input" [(ngModel)]="mc_question.question" placeholder="Question here"><br>
+            <div class="mc_answers_holder" *ngIf="mc_question.answerChoices">
+              <input class="inline mc_answer" *ngFor="let answer_choice of mc_question.answerChoices" [(ngModel)]="answer_choice.answerChoice" placeholder="Answer Choice here">
+              <button class="mc_answer_button" (click)="addMultipleChoiceAnswer(mc_question)">+</button>
+              <button class="mc_answer_button" (click)="removeMultipleChoiceAnswer(mc_question)">-</button>
+            </div>
+          </div>
+        </div>
+        <button class="question_button" id="add_mc_question" (click)="addMultipleChoice(community_action.associatedMCQuestions)">Add Question</button>
+        <button class="question_button" id="remove_mc_question" (click)="removeMultipleChoice(community_action.associatedMCQuestions)">Remove Question</button>
+      </div>
+
+      <div id="fr_question_interface">
+        <p class="questions_header">Free Response Questions</p>
+        <div class="fr_questions_holder" *ngIf="community_action.associatedFRQuestions.length">
+          <div *ngFor="let fr_question of community_action.associatedFRQuestions">
+            <input class="inline fr_question text_input" [(ngModel)]="fr_question" placeholder="Question here"><br>
+          </div>
+        </div>
+        <button class="question_button" id="add_fr_question" (click)="addFreeResponseQuestion(community_action.associatedFRQuestions)">Add Question</button>
+        <button class="question_button" id="remove_fr_question" (click)="removeFreeResponseQuestion(community_action.associatedFRQuestions)">Remove Question</button>
+      </div> 
+      <div class="content_block_divider"></div>                                                                                                                                                       
+    </div>
+    <div class="content_buttons_holder indented_holder">
+      <button class="content_button add_content_button" id="add_community_action_opportunity" (click)="addContent(upload.communityActionOpportunities)">Add
+        Community Action Opportunities Content</button>
+      <button class="content_button remove_content_button" id="remove_community_action_opportunity" (click)="removeContent(upload.communityActionOpportunities)">Remove
+        Community Action Opportunities Content</button>
+    </div>
+  </div>
+
+  <div id="submit_time_holder" class="content_holder centered">
+    <p class="content_title">Submit time</p>
+    <input type="datetime-local" id="date_time_input" [(ngModel)]="upload.dateToBeCreated">
+  </div>
+
+  <div id="submit_button_holder">
+    <button class="content_button add_content_button" id="submit_content" (click)="submit()">Schedule Email</button>
+  </div>
+</div> 

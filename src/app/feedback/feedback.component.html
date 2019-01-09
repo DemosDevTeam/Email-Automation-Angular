@@ -1,3 +1,38 @@
-<p>
-  feedback works!
-</p>
+<div class="page_header">
+  <div class="left_align inline">
+    <img id="durham_crest" src="https://files.slack.com/files-pri/TBBQYCTSM-FF98KLGSZ/image.png">
+  </div>
+  <div class="centered inline">
+    <p id="durham_title" class="large_text_title inline centered">Durham Citizen Feedback</p>
+  </div>
+</div>
+<div div class="centered">
+  <div class="feedback_holder inline">
+    <h2 class="form_header">{{content.title}}</h2>
+    <div class="video_holder">
+      <iframe id="video" src="https://www.youtube.com/embed/GdM0koq7w8o"></iframe>
+    </div>
+    <div class="left_align"><p class="form_sub_header">Details</p></div>
+    <p class="left_align form_text">{{content.text}}</p>
+    <div class="tag_holders left_align">
+      <p class="content_tag inline" *ngFor="let tag of content.contentTags">{{tag}}</p>
+    </div>
+
+    <div class="left_align"><p class="form_sub_header">Questions</p></div>
+      <div class="questions_holder">
+
+      </div>
+      <div class="questions_holder">
+        <div class="left_align fr_question_sub_holder" *ngFor="let question of content.associatedFRQuestions">
+          <p class="fr_question">{{question}}</p>
+          <textarea class="fr_response" placeholder="Your feedback here"></textarea>
+        </div>
+      </div>
+    
+    <div class="left_align">
+      <button id="submission_button">Submit Feedback</button>
+    </div>
+  </div>
+</div>
+
+

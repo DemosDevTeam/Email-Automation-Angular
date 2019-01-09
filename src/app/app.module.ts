@@ -7,13 +7,19 @@ import { AppComponent } from './app.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { CityDashboardComponent } from './city-dashboard/city-dashboard.component';
+import { EventComponent } from './event/event.component';
+import { CouncilMeetingUpdateComponent } from './council-meeting-update/council-meeting-update.component';
+import { TownInNewsComponent } from './town-in-news/town-in-news.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
     FeedbackComponent,
-    CityDashboardComponent
+    CityDashboardComponent,
+    EventComponent,
+    CouncilMeetingUpdateComponent,
+    TownInNewsComponent
   ],
   imports: [
     BrowserModule,

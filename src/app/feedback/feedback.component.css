@@ -1,0 +1,91 @@
+#durham_crest{
+    width:60px;
+    height:60px;
+    vertical-align: middle;
+}
+
+#durham_title{
+    margin-left:20px;
+}
+
+.page_header{
+    margin-bottom:10px;
+}
+
+.feedback_holder{
+    width:95%;
+    background-color:#F8F8F8;
+    border: 1px solid #E8E8E8;
+    padding-left:15px;
+    padding-right:15px;
+}
+
+#submission_button{
+    background-color:#49c7e3ff;
+    font-size: 20px;
+    font-family: 'Source Sans Pro', sans-serif;
+    border-radius: 15px;
+    padding:10px;
+    color:white;
+    margin-bottom:10px;
+    margin-top:15px;
+}
+
+#submission_button:active{
+    box-shadow: 0px 0px 2px 2px #C8C8C8;
+}
+
+.content_tag{
+    font-size: 20px;
+    margin-left:10px;
+    margin-right:10px;
+    margin-top:5px;
+    box-shadow: 0px 0px 2px 2px #49c7e3ff;
+    padding-left:10px;
+    padding-right:10px;
+    border-radius:10%;
+    color:#49c7e3ff;
+}
+
+.form_text{
+    font-size: 17.5px;
+    color: #707070;
+    margin-top:1px;
+    margin-bottom:2px;
+}
+
+.form_sub_header{
+    text-align:left;
+    font-size: 17.5px;
+    border-bottom: 1px solid black;
+    display: inline-block;
+    margin-bottom:1px;
+}
+
+/*styling for questions*/
+
+/*styling for mc questions*/
+
+/*styling for fr questions*/
+.fr_question{
+    margin-top:10px;
+    margin-bottom:2px;
+    font-size:17.5px;
+}
+
+.fr_response{
+    width:400px;
+    font-size:20px;
+    padding-left:2px;
+    padding-top:2px;
+    padding-bottom:2px;
+}
+
+#video{
+    width:600px;
+    height:400px;
+}
+
+.form_header{
+    font-family: 'Source Sans Pro', sans-serif;
+}

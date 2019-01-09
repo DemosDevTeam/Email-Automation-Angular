@@ -1,9 +1,20 @@
 <div class="centered">
-  <h1>Welcome to Durham Interactive Email Registration</h1>
+  <h1>Welcome to Durham E News</h1>
 </div>
 
 <div class="centered" id="registration_holder">
 
+  <p id="interests_title" class="inline sub_header">What do you care about?</p><br>
+  <p class="inline subtext">We know you care about a lot of things, so feel free to come back and add more later!</p>
+  <div class="trait_selector_holder">
+      <div class="inline">
+        <button [ngClass]="isSelected(interest.val)" class="interest_button" *ngFor="let interest of interest_options_unselected" (click)="toggleInterest(interest.val)">{{interest.key}}</button><br>
+      </div>
+  </div><br>
+  <div class="spacing"></div>
+
+  <p id="interests_title" class="inline sub_header">Tell us a little about yourself:</p><br>
+  <p id="subtext_two" class="inline subtext">The acta team is dedicated to our mission to connect you with unbiased, informative, and relevant local news and updates. We request our users’ demographics in order to get to know those who are using our platform. The more familiar we are with you, the more accurate our algorithms are. Please fill in as much information as you feel comfortable sharing with us. We are committed to protecting your privacy.</p>
   <div class="trait_selector_holder">
     <p class="inline input_name">Email</p><br>
     <input class="inline text_input" [(ngModel)]="user.email" placeholder="email"><br>
@@ -12,7 +23,6 @@
   <!--<select class="inline" [(ngModel)]="user.email">
     <option *ngFor="let email of email_options" [value]="email">{{email}}</option>
   </select>-->
-
 
   <div class="trait_selector_holder">
     <p class="inline input_name">Gender</p><br>
@@ -63,18 +73,8 @@
     </select><br>
   </div>
 
-  <div id="interest_holder">
-    <div id="interest_options_holder">
-      <p id="interests_title" class="inline small_vert_margin">Select Interests (all that apply)</p><br>
-      <p class="inline">------------</p><br>
-      <div class="inline">
-        <button [ngClass]="isSelected(interest.val)" class="interest_button" *ngFor="let interest of interest_options_unselected" (click)="toggleInterest(interest.val)">{{interest.key}}</button><br>
-      </div>
-    </div><br>
-  </div>
-
   <div class="submission_err_holder" *ngIf="err_message.exists">{{err_message.message}}</div>
-  <button (click)="submitInputs()">Submit</button><br>
+  <button id="submission_button" (click)="submitInputs()">Submit</button><br>
 
   
 </div>
