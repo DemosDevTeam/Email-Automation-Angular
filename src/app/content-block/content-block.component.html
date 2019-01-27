@@ -1,0 +1,39 @@
+<p class="large_text_title">Title</p>
+<input class="inline large_text_input" [(ngModel)]="content.title" placeholder="The best event ever!"><br>
+<p class="large_text_title">Associated Text</p>
+<input class="inline large_text_input associated_text_holder" [(ngModel)]="content.text" placeholder="This event was put on by the city of goodness">
+<p class="large_text_title">Add tags to your content</p>
+<div class="inline tag_selector">
+  <button class="inline tag_button" [ngClass]="[isFirst(tag, tags), isSelected(content, tag.val)]" *ngFor="let tag of tags" (click)="toggleTag(content, tag.val)">{{tag.key}}</button>
+</div>
+
+<p class="large_text_title">Citizen Questions</p>
+<div id="mc_question_interface">
+
+  <p class="questions_header">Multiple Choice Questions</p>
+  <div class="mc_questions_holder" *ngIf="content.associatedMCQuestions">
+    <div class="mc_question_holder" *ngFor="let mc_question of content.associatedMCQuestions">
+      <input class="inline mc_question text_input" [(ngModel)]="mc_question.question" placeholder="Question here"><br>
+      <div class="mc_answers_holder" *ngIf="mc_question.answerChoices">
+        <input class="inline mc_answer" *ngFor="let answer_choice of mc_question.answerChoices" [(ngModel)]="answer_choice.answerChoice" placeholder="Answer Choice here">
+        <button class="mc_answer_button add_mc_answer_button" (click)="addMultipleChoiceAnswer(mc_question)">+</button>
+        <button class="mc_answer_button remove_mc_answer_button" (click)="removeMultipleChoiceAnswer(mc_question)">-</button>
+      </div>
+    </div>
+  </div>
+  <button class="question_button" id="add_mc_question" (click)="addMultipleChoice(content.associatedMCQuestions)">Add Question</button>
+  <button class="question_button" id="remove_mc_question" (click)="removeMultipleChoice(content.associatedMCQuestions)">Remove Question</button>
+</div>
+
+<div id="fr_question_interface">
+  <p class="questions_header"> Free Response Questions</p>
+  <div class="fr_questions_holder" *ngIf="content.associatedFRQuestions.length">
+    <!--<div *ngFor="let fr_question of content.associatedFRQuestions; let i = index">-->
+      <input *ngFor="let fr_question of content.associatedFRQuestions;" class="inline fr_question text_input" [(ngModel)]="fr_question.question" placeholder="Question here"><br>
+    <!--</div>-->
+  </div>
+  <button class="question_button" id="add_fr_question" (click)="addFreeResponseQuestion(content.associatedFRQuestions)">Add Question</button>
+  <button class="question_button" id="remove_fr_question" (click)="removeFreeResponseQuestion(content.associatedFRQuestions)">Remove Question</button>
+</div>
+
+<div class="content_block_divider"></div>

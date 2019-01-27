@@ -22,9 +22,9 @@ export class FeedbackComponent implements OnInit {
         ]
       }
     ],
-    associatedFRQuestions:[
-      "What are your biggest pedestrian safety concerns?",
-    ]
+    associatedFRQuestions:[{
+      question:"What are your biggest pedestrian safety concerns?"
+    }]
   }
 
   constructor() { }

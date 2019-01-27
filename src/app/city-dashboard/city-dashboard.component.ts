@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {fullContent} from '../fullContent';
 import {Content} from '../content';
-import {mcQuestion} from '../mcQuestion';
+import { ActivatedRoute } from "@angular/router";
 
 
 @Component({
@@ -12,6 +12,8 @@ import {mcQuestion} from '../mcQuestion';
 export class CityDashboardComponent implements OnInit {
   //initialize upload object with arrays of length 1 each with a single Content object
   upload: fullContent = {
+    cityName: "",
+    stateName: "",
     events: [{
       title: "",
       text: "",
@@ -70,76 +72,20 @@ export class CityDashboardComponent implements OnInit {
     content_arr.pop();
   }
 
-  //add tag remove tag to/from the currently targeted piece of content
-  toggleTag(content: Content, tag: String): void {
-
-    if(content.contentTags.indexOf(tag) < 0){
-      content.contentTags.push(tag);
-    } else {
-      content.contentTags.splice(content.contentTags.indexOf(tag), 1);
-    }
-    this.isSelected(content, tag);
-  }
-  
-  //used to toggle class for styling based on whether or not an interest tag has been selected
-  isSelected(content: Content, tag: String){
-    if(content.contentTags.indexOf(tag) >= 0){
-      //content tag has been associated with this piece of content
-      return "selected"
-    }
-
-    return "";
-  }
-
-  isFirst(content: Content, contentArr: Content[]): String {
-    if(contentArr[0] == content){
-      return "tag_button_left_border";
-    }
-
-    return "";
-  }
-
-  addMultipleChoice(associatedQuestions: mcQuestion[]): void {
-    associatedQuestions.push({
-      question: "", 
-      answerChoices: [{answerChoice:""}]
-    });
-  }
-
-  removeMultipleChoice(associatedQuestions: mcQuestion[]): void {
-    associatedQuestions.pop();
-  }
-
-  addMultipleChoiceAnswer(question: mcQuestion): void {
-    question.answerChoices.push({answerChoice:""});
-  }
-
-  removeMultipleChoiceAnswer(question: mcQuestion): void {
-    question.answerChoices.pop();
-  }
-
-  addFreeResponseQuestion(associatedQuestions: String[]): void {
-    console.log("inside of addFreeResponseQuestion function call");
-    console.log("value fo associatedQuestions array:");
-    console.log(associatedQuestions);
-    associatedQuestions.push("");
-  }
-
-  removeFreeResponseQuestion(associatedQuestions: String[]): void {
-    console.log("inside of removeFreeResponseQuestion function call");
-    console.log("value of associatedQuestions array:");
-    console.log(associatedQuestions);
-    associatedQuestions.pop();
-  }
-
   submit(): void {
     console.log("upload:");
     console.log(this.upload);
   }
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.upload.cityName = this.route.snapshot.paramMap.get("city");
+    this.upload.stateName = this.route.snapshot.paramMap.get("state");
+
+    console.log("in ngOnInit, values of cityName and stateName respectively:");
+    console.log(this.upload.cityName);
+    console.log(this.upload.stateName);
   }
 
 }

@@ -40,35 +40,35 @@
 
   <div class="trait_selector_holder">
     <p class="inline input_name">Household Income Rage</p><br>
-    <select class="inline trait_selector" [(ngModel)]="user.income">
+    <select class="inline trait_selector" [(ngModel)]="user.householdIncomeRange">
       <option *ngFor="let income of income_options" [value]="income">{{income}}</option>
     </select><br>
   </div>
 
   <div class="trait_selector_holder">
     <p class="inline input_name">Age Rage</p><br>
-    <select class="inline trait_selector" [(ngModel)]="user.age">
+    <select class="inline trait_selector" [(ngModel)]="user.ageRange">
       <option *ngFor="let age of age_options" [value]="age">{{age}}</option>
     </select><br>
   </div>
 
   <div class="trait_selector_holder">
     <p class="inline input_name ">Employment Status</p><br>
-    <select class="inline trait_selector" [(ngModel)]="user.employment">
+    <select class="inline trait_selector" [(ngModel)]="user.employmentStatus">
       <option *ngFor="let employment of employment_options" [value]="employment">{{employment}}</option>
     </select><br>
   </div>
 
   <div class="trait_selector_holder">
     <p class="inline input_name">Education Level</p><br>
-    <select class="inline trait_selector" [(ngModel)]="user.education">
+    <select class="inline trait_selector" [(ngModel)]="user.educationLevel">
       <option *ngFor="let education of education_options" [value]="education">{{education}}</option>
     </select><br>
   </div>
 
   <div class="trait_selector_holder">
     <p class="inline input_name">Number of Children</p><br>
-    <select class="inline trait_selector" [(ngModel)]="user.children">
+    <select class="inline trait_selector" [(ngModel)]="user.numberOfChildren">
       <option *ngFor="let children of children_options" [value]="children">{{children}}</option>
     </select><br>
   </div>

@@ -6,4 +6,6 @@ export class fullContent {
     townInTheNews: Content[];
     communityActionOpportunities: Content[];
     dateToBeCreated: String;
+    cityName: String;
+    stateName: String;
 }

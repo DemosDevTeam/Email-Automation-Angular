@@ -2,11 +2,11 @@ export class User {
     email: String;
     gender: String;
     race: String;
-    income: String;
-    age: String;
-    employment: String;
-    education: String;
-    children: String;
+    householdIncomeRange: String;
+    ageRange: String;
+    employmentStatus: String;
+    educationLevel: String;
+    numberOfChildren: String;
     interests: {
         housing: number;
         publicSpaces: number;
@@ -16,4 +16,7 @@ export class User {
         environment: number;
         economicDevelopment: number;
     };
+    city: String;
+    state: String;
+    score: number;
 }

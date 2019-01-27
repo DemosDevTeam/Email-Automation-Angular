@@ -51,6 +51,7 @@ select{
 
 .submission_err_holder{
     color:red;
+    margin-top:3px;
 }
 
 #interests_title{

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {CreateSubscriberService} from '../create-subscriber.service';
 
 import { User } from '../user';
 
@@ -8,9 +9,9 @@ import { User } from '../user';
   styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent implements OnInit {
-  //field where input values will be stored
+  //object where input values will be stored
   user: User = {
-    email: "", gender: "", race: "", income: "", age: "", employment: "", education: "", children: "", 
+    email: "", gender: "", race: "", householdIncomeRange: "", ageRange: "", employmentStatus: "", educationLevel: "", numberOfChildren: "", 
     interests: {
       "housing": 0,
       "publicSpaces": 0,
@@ -19,7 +20,10 @@ export class LandingPageComponent implements OnInit {
       "education": 0,
       "environment": 0,
       "economicDevelopment": 0
-    }
+    },
+    city: "Greensboro",
+    state: "North Carolina",
+    score: 0
   };
 
   //used for displaying messages to user about invalid inputs
@@ -52,6 +56,7 @@ export class LandingPageComponent implements OnInit {
   }
 
   verifyInputs(): void {
+    this.err_message.exists = false;
     if(this.user.email == ""){
       this.err_message.exists = true;
       this.err_message.message = "Please ensure that a valid email input has been entered";
@@ -64,31 +69,31 @@ export class LandingPageComponent implements OnInit {
       return;
     }
 
-    if(this.user.income == ""){
+    if(this.user.householdIncomeRange == ""){
       this.err_message.exists = true;
       this.err_message.message = "Please ensure that an income range option has been selected";
       return;
     }
 
-    if(this.user.age == ""){
+    if(this.user.ageRange == ""){
       this.err_message.exists = true;
       this.err_message.message = "Please ensure that an age range option has been selected";
       return;
     }
 
-    if(this.user.employment == ""){
+    if(this.user.employmentStatus == ""){
       this.err_message.exists = true;
       this.err_message.message = "Please ensure that an employment option has been selected";
       return;
     }
 
-    if(this.user.education == ""){
+    if(this.user.educationLevel == ""){
       this.err_message.exists = true;
       this.err_message.message = "Please ensure that an education level option has been selected";
       return;
     }
 
-    if(this.user.children == ""){
+    if(this.user.numberOfChildren == ""){
       this.err_message.exists = true;
       this.err_message.message = "Please ensure that a number of children option has been selected";
       return;
@@ -112,14 +117,10 @@ export class LandingPageComponent implements OnInit {
   }
 
   toggleInterest(interest: string): void{
-    console.log("triggered toggleInterest function");
-    console.log("value of this interest in this.user.interests arr is ");
-    console.log(this.user.interests[interest]);
+
     if(this.user.interests[interest] ==  0){
       this.user.interests[interest] = 1;
-      console.log("count for this interest is 0");
     } else {
-      console.log("count for this interest is 1");
       this.user.interests[interest] = 0;
     }
 
@@ -127,21 +128,25 @@ export class LandingPageComponent implements OnInit {
   }
 
   submit(): void {
-    //TODO: write service to make http request to back end
+    this.createSubscriberService.subscribeUser(this.user)
+    .subscribe(response => {
+      console.log("response from createSubscriberService:");
+      console.log(response);
+    })
   }
 
   submitInputs(): void {
     this.verifyInputs();
+    if(this.err_message.exists){
+      return;
+    }
     this.logVals();
-    //need to write submission
-    //this.submit();
+    this.submit();
   }
 
-  constructor() { }
+  constructor(private createSubscriberService: CreateSubscriberService) { }
 
   ngOnInit() {
-    console.log("user at ngOnInit() is:");
-    console.log(this.user);
   }
 
 }
