@@ -134,3 +134,9 @@
     padding: 8px;
     background-color: #f7f7f7;
 }
+
+
+#error_message_holder{
+    text-align: center;
+    color: red;
+}

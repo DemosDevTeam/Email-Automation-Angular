@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Content} from '../content';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-feedback',
@@ -27,9 +28,19 @@ export class FeedbackComponent implements OnInit {
     }]
   }
 
-  constructor() { }
+  state: String;
+  city: String;
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.state = this.route.snapshot.paramMap.get("state");
+    this.city = this.route.snapshot.paramMap.get("city");
+
+    console.log("state:");
+    console.log(this.state);
+    console.log("city:");
+    console.log(this.city);
   }
 
 }

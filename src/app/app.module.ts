@@ -12,6 +12,8 @@ import { EventComponent } from './event/event.component';
 import { CouncilMeetingUpdateComponent } from './council-meeting-update/council-meeting-update.component';
 import { TownInNewsComponent } from './town-in-news/town-in-news.component';
 import { ContentBlockComponent } from './content-block/content-block.component';
+import { SuccessfulUserCreationComponent } from './successful-user-creation/successful-user-creation.component';
+import { SuccessfulContentUploadComponent } from './successful-content-upload/successful-content-upload.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { ContentBlockComponent } from './content-block/content-block.component';
     EventComponent,
     CouncilMeetingUpdateComponent,
     TownInNewsComponent,
-    ContentBlockComponent
+    ContentBlockComponent,
+    SuccessfulUserCreationComponent,
+    SuccessfulContentUploadComponent
   ],
   imports: [
     BrowserModule,

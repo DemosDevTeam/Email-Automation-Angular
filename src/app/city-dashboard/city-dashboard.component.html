@@ -67,6 +67,9 @@
   </div>
 
   <div id="submit_button_holder">
-    <button class="content_button add_content_button" id="submit_content" (click)="submit()">Schedule Email</button>
+    <button class="content_button add_content_button" id="submit_content" (click)="submitInputs()">Schedule Email</button>
+  </div>
+  <div id="error_message_holder">
+    <p class="inline">{{err_message.message}}</p>
   </div>
 </div> 
