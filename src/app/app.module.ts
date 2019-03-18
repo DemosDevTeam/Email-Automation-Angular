@@ -14,6 +14,7 @@ import { TownInNewsComponent } from './town-in-news/town-in-news.component';
 import { ContentBlockComponent } from './content-block/content-block.component';
 import { SuccessfulUserCreationComponent } from './successful-user-creation/successful-user-creation.component';
 import { SuccessfulContentUploadComponent } from './successful-content-upload/successful-content-upload.component';
+import { SuccessfulFeedbackComponent } from './successful-feedback/successful-feedback.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SuccessfulContentUploadComponent } from './successful-content-upload/su
     TownInNewsComponent,
     ContentBlockComponent,
     SuccessfulUserCreationComponent,
-    SuccessfulContentUploadComponent
+    SuccessfulContentUploadComponent,
+    SuccessfulFeedbackComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,5 @@
 export class frQuestion {
-    question: String;
+    question: string;
+    responses: string[];
+    _id?: string;
 }

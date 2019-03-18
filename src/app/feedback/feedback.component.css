@@ -89,3 +89,17 @@
 .form_header{
     font-family: 'Source Sans Pro', sans-serif;
 }
+
+
+.mc_response{
+    font-size: 17.5px;
+    color: #707070;
+    margin-top: 1px;
+    margin-bottom: 2px;
+    font-family: 'Source Sans Pro', sans-serif;
+    margin-left:3px;
+}
+
+input[type="radio"]{
+    margin-right:7px;
+}

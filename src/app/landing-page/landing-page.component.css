@@ -59,11 +59,6 @@ select{
     margin-top:30px;
 }
 
-.selected{
-    color: black;
-    border-top-color: #49c7e3ff;
-}
-
 .sub_header{
     text-align:center;
     margin-top:2px;
@@ -92,4 +87,28 @@ select{
     padding-left: 20px;
     padding-right: 20px;
     color: white;
+}
+
+
+.generic_button{
+    font-size: 20px;
+    font-family: 'Source Sans Pro', sans-serif;
+    border-right: 2px solid #C8C8C8;
+    border-top: 2px solid #C8C8C8;
+    border-bottom: 2px solid #C8C8C8;
+    border-left: 1px solid #C8C8C8;
+    padding-left: 3px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-right: 18px;
+    color: #C8C8C8;
+}
+
+.generic_radio{
+    visibility: hidden;
+}
+
+.selected{
+    color: black;
+    border-top-color: #49c7e3ff;
 }

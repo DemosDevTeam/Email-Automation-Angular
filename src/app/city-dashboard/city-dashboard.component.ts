@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {fullContent} from '../fullContent';
 import {Content} from '../content';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import {UploadCityContentService} from '../upload-city-content.service';
 
 
@@ -18,14 +18,15 @@ export class CityDashboardComponent implements OnInit {
     events: [{
       title: "",
       text: "",
+      imageUrl: "",
       contentTags: [],
       associatedMCQuestions: [],
       associatedFRQuestions: []
-    }
-    ],
+    }],
     councilMeetingUpdates: [{
       title: "",
       text: "",
+      imageUrl: "",
       contentTags: [],
       associatedMCQuestions: [],
       associatedFRQuestions: []
@@ -33,6 +34,7 @@ export class CityDashboardComponent implements OnInit {
     townInTheNews: [{
       title: "",
       text: "",
+      imageUrl: "",
       contentTags: [],
       associatedMCQuestions: [],
       associatedFRQuestions: []
@@ -40,6 +42,7 @@ export class CityDashboardComponent implements OnInit {
     communityActionOpportunities: [{
       title: "",
       text: "",
+      imageUrl: "",
       contentTags: [],
       associatedMCQuestions: [],
       associatedFRQuestions: []
@@ -68,6 +71,7 @@ export class CityDashboardComponent implements OnInit {
     content_arr.push({
       title: "",
       text: "",
+      imageUrl: "",
       contentTags: [],
       associatedMCQuestions: [],
       associatedFRQuestions: []
@@ -100,12 +104,14 @@ export class CityDashboardComponent implements OnInit {
     .subscribe(response => {
       console.log("response from uploadCityContentService.subscribeContent");
       console.log(response);
+
+      this.router.navigateByUrl('/successful-content-upload/' +  this.upload.stateName + '/' + this.upload.cityName)
     })
 
     console.log("subscribe function has been called and request should have been sent");
   }
 
-  constructor(private route: ActivatedRoute, private uploadCityContentService: UploadCityContentService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private uploadCityContentService: UploadCityContentService) { }
 
   ngOnInit() {
     this.upload.cityName = this.route.snapshot.paramMap.get("city");
@@ -135,7 +141,42 @@ export class CityDashboardComponent implements OnInit {
       return;
     }
 
+    let content_arrs = [this.upload.events, this.upload.councilMeetingUpdates, this.upload.townInTheNews, this.upload.communityActionOpportunities];
+
+    if(this.check_for_title_duplicates(content_arrs)){
+      this.err_message.exists = true;
+      this.err_message.message = "Please ensure that the titles to all content pieces are unique";
+      return;
+    }
     //if we have made it this far it means that input is clean
+  }
+
+  check_for_title_duplicates(content_arrs: Content[][]): boolean{
+    //iterate through every array in the array for every array in the array
+    console.log("content_arrs from within check_for_title_duplicates:");
+    console.log(content_arrs);
+    for(let i=0; i<content_arrs.length; i++){
+      for(let j = 0; j<content_arrs.length; j++){
+
+        //iterate through all the members of each array
+        for(let k=0; k<content_arrs[i].length; k++){
+          for(let l=0; l<content_arrs[j].length; l++){
+            if(content_arrs[i][k].title == content_arrs[j][l].title && content_arrs[i][k].title != ""
+              && !(i == j &&  k==l)){
+                console.log("the indexes where this occurred are ["+ i + "][" + k + "] and [" + j + "][" + l + "]");
+              this.err_message.exists = true;
+              this.err_message.message = "Please ensure that the titles to all content pieces are unique";
+              //there are duplicates
+              return true;
+            }
+          }
+        }
+
+
+      }
+    }
+
+    return false;
   }
 
 }

@@ -28,9 +28,20 @@
           <textarea class="fr_response" placeholder="Your feedback here"></textarea>
         </div>
       </div>
+
+      <div class="questions_holder">
+        <div class="left_align mc_question_sub_holder" *ngFor="let question of content.associatedMCQuestions">
+          <p class="fr_question">{{question.question}}</p>
+          <div *ngFor="let answerChoice of question.answerChoices">
+            <label class="mc_response">
+             <input type="radio" [name]="question.question" [value]="answerChoice.answerChoice">{{answerChoice.answerChoice}}
+            </label>
+          </div>
+        </div>
+      </div>
     
     <div class="left_align">
-      <button id="submission_button">Submit Feedback</button>
+      <button id="submission_button" (click)="submit()">Submit Feedback</button>
     </div>
   </div>
 </div>

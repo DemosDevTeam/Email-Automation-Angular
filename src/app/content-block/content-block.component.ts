@@ -54,7 +54,7 @@ export class ContentBlockComponent implements OnInit {
   addMultipleChoice(associatedQuestions: mcQuestion[]): void {
     associatedQuestions.push({
       question: "", 
-      answerChoices: [{answerChoice:""}]
+      answerChoices: [{answerChoice:"", count: 0}]
     });
   }
 
@@ -63,7 +63,7 @@ export class ContentBlockComponent implements OnInit {
   }
 
   addMultipleChoiceAnswer(question: mcQuestion): void {
-    question.answerChoices.push({answerChoice:""});
+    question.answerChoices.push({answerChoice:"", count: 0});
   }
 
   removeMultipleChoiceAnswer(question: mcQuestion): void {
@@ -71,18 +71,12 @@ export class ContentBlockComponent implements OnInit {
   }
 
   addFreeResponseQuestion(associatedQuestions: frQuestion[]): void {
-    console.log("inside of addFreeResponseQuestion function call");
-    console.log("value of associatedQuestions array:");
-    console.log(associatedQuestions);
-    associatedQuestions.push({question: ""});
-    console.log("value of this.content.associatedFRQuestions");
-    console.log(this.content.associatedFRQuestions);
+    let responses_arr: string[];
+    responses_arr = [];
+    associatedQuestions.push({question: "", responses: responses_arr});
   }
 
   removeFreeResponseQuestion(associatedQuestions: frQuestion[]): void {
-    console.log("inside of removeFreeResponseQuestion function call");
-    console.log("value of associatedQuestions array:");
-    console.log(associatedQuestions);
     associatedQuestions.pop();
   }
 
