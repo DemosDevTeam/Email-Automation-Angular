@@ -9,11 +9,15 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 There is not a landing page that the root url navigates to, due to a unique url being used with every user's intended sign up. The urls listed below are valid with this server alone, and the url `http://localhost:4200/feedback/:state/:city/:dateToBeCreated/:title` can be accessed while running a local instance of our node server project.
 
 Valid urls:
-  `http://localhost:4200/landing-page/:state/:city` - landing page where users can sign up to recieve emails from our platform
-  `http://localhost:4200/dashboard/:state/:city` - city facing page for submitting content for next set of outgoing emails
-  `http://localhost:4200/successful-content-upload/:state/:city` - single button page after successful city content upload
-  `http://localhost:4200/successful-user-creation/:state/:city` - single button page after successful user sign up
-  `http://localhost:4200/successful-feedback/:state/:city` - single button page after successful feedback submission
+  - `http://localhost:4200/landing-page/:state/:city` - landing page where users can sign up to recieve emails from our platform
+
+  - `http://localhost:4200/dashboard/:state/:city` - city facing page for submitting content for next set of outgoing emails
+
+  - `http://localhost:4200/successful-content-upload/:state/:city` - single button page after successful city content upload
+
+  - `http://localhost:4200/successful-user-creation/:state/:city` - single button page after successful user sign up
+
+  - `http://localhost:4200/successful-feedback/:state/:city` - single button page after successful feedback submission
 
 The components linked to these url endpoints can be seen in src/app/app-routing.module.ts
 
