@@ -6,22 +6,27 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+There is not a landing page that the root url navigates to, due to a unique url being used with every user's intended sign up. The urls listed below are valid with this server alone, and the url `http://localhost:4200/feedback/:state/:city/:dateToBeCreated/:title` can be accessed while running a local instance of our node server project.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Valid urls:
+  `http://localhost:4200/landing-page/:state/:city` - landing page where users can sign up to recieve emails from our platform
+  `http://localhost:4200/dashboard/:state/:city` - city facing page for submitting content for next set of outgoing emails
+  `http://localhost:4200/successful-content-upload/:state/:city` - single button page after successful city content upload
+  `http://localhost:4200/successful-user-creation/:state/:city` - single button page after successful user sign up
+  `http://localhost:4200/successful-feedback/:state/:city` - single button page after successful feedback submission
 
-## Build
+The components linked to these url endpoints can be seen in src/app/app-routing.module.ts
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Components
+The following is a list of the components used in our project (can be found in src/app/)
+ * city-dashboard - city facing dashboard for content upload
+ * content-block - nested in city-dashboard to store data related to each piece of content uploaded by city
+ * landing-page - used for user sign up, no nested components
+ * feedback - used for gathering user feedback; this is linked to from the emails we send out and the url dictates where we store data after the user has filled out our form. To see this component, comment out the contents of the ngOnSubmit function (but not the funciton itself) in this component and you will see the component rendered with placeholder data
+ * successful-feedback - simple component used after feedback submission
+ * successful-content-upload - simple component used after city content submission
+ * successful-user-creation - simple component used after successful user creation (from landing page)
 
-## Running unit tests
+## Angular Documentation
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+To better understand our project, see the angular documentation as you read through our code. It can be accessed [here](https://angular.io/docs)
