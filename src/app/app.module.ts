@@ -28,7 +28,7 @@ import { SuccessfulFeedbackComponent } from './successful-feedback/successful-fe
     ContentBlockComponent,
     SuccessfulUserCreationComponent,
     SuccessfulContentUploadComponent,
-    SuccessfulFeedbackComponent
+    SuccessfulFeedbackComponent,
   ],
   imports: [
     BrowserModule,

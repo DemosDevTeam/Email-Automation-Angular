@@ -20,7 +20,6 @@ export class UploadCityContentService {
 
   subscribeContent(city_content: fullContent): Observable<Object>{
     return this.http.post<Object>(this.request_url, city_content, this.httpOptions);
-
   }
   constructor(private http: HttpClient) { }
 }

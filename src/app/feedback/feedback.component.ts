@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Content} from '../content';
 import {ActivatedRoute, Router} from "@angular/router";
 import {GetFeedbackInfoService} from "../get-feedback-info.service";
+import {SubmitFeedbackService} from '../submit-feedback.service';
+import {feedback} from '../feedback';
 
 @Component({
   selector: 'app-feedback',
@@ -35,13 +37,52 @@ export class FeedbackComponent implements OnInit {
   city: string;
   dateToBeCreated: string;
   title: string;
+  category: string;
+  feedback: feedback;
+
+
+  select_answer(question: string, question_answer: string) {
+
+    for(let i=0; i<this.content.associatedMCQuestions.length; i++){
+      //check if question is correct
+      if(this.content.associatedMCQuestions[i].question == question){
+        //check if this is correct answer chioce, if it is set to 1, else to 0
+        for(let j=0; j<this.content.associatedMCQuestions[i].answerChoices.length; j++){
+
+          if(this.content.associatedMCQuestions[i].answerChoices[j].answerChoice == question_answer){
+            this.content.associatedMCQuestions[i].answerChoices[j].count = 1;
+          } else {
+            this.content.associatedMCQuestions[i].answerChoices[j].count = 0;
+          }
+        }
+        return;
+      }
+
+    }
+  }
 
 
   submit(){
-    this.router.navigateByUrl('/successful-feedback');
+    this.feedback = {
+      category: this.category,
+      associatedFRQuestions: this.content.associatedFRQuestions,
+      associatedMCQuestions: this.content.associatedMCQuestions,
+      city: this.city,
+      state: this.state,
+      dateToBeCreated: this.dateToBeCreated
+    }
+
+
+    this.submitFeedbackService.subscribeContent(this.feedback)
+    .subscribe(response => {
+      console.log("response from backend after running through submit content subscriber");
+      console.log(response);
+    })
+
+    //this.router.navigateByUrl('/successful-feedback');
   }
 
-  constructor(private router: Router, private route: ActivatedRoute, private feedbackInfoService: GetFeedbackInfoService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private feedbackInfoService: GetFeedbackInfoService, private submitFeedbackService: SubmitFeedbackService) { }
 
   ngOnInit() {
     this.state = this.route.snapshot.paramMap.get("state");
@@ -56,6 +97,7 @@ export class FeedbackComponent implements OnInit {
 
       let res: any = response;
 
+      this.category = res.category;
       this.content = res.result;
     })
 
